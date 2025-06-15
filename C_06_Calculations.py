@@ -70,6 +70,8 @@ def get_inputs(input_type, how_many, item_limit=0):
     all_item_names = []
     all_weights = []
     all_kg_weights = []
+    all_price_per_kg = []
+    all_rounded_price_kg = []
     all_costs = []
 
     # expenses dictionary
@@ -103,8 +105,6 @@ def get_inputs(input_type, how_many, item_limit=0):
         elif item_name == "xxx":
             break
 
-
-
         if amount == "":
             amount = how_many
 
@@ -114,16 +114,27 @@ def get_inputs(input_type, how_many, item_limit=0):
 
         cost = num_check("Price for the item? $", "float")
 
+        price_kg = (cost / kg_weight)
+
+        rounded_price_kg = f"{price_kg:.2f}"
+
         item_limit += 1
 
         all_item_names.append(item_name)
         all_weights.append(weight)
         all_kg_weights.append(kg_weight)
+        all_price_per_kg.append(price_kg)
+        all_rounded_price_kg.append(rounded_price_kg)
         all_costs.append(cost)
 
 
     if item_amount == item_limit:
-        print(all_item_names, all_weights, all_costs, all_kg_weights)
+        print(f"""Name of items: {all_item_names}, 
+        Weight of items: {all_weights}, 
+        Cost of items: {all_costs}, 
+        Weight (KG) of items: {all_kg_weights}, 
+        Unit price per KG {all_price_per_kg}
+        (rounded to 2 dp) {all_rounded_price_kg}""")
 
     return get_inputs
 
