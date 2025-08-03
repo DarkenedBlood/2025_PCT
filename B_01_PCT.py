@@ -192,11 +192,11 @@ def get_inputs(input_type, how_many, item_limit=0):
     recommendation_sorter = price_comparison_frame.sort_values(by='Price per KG (2 dp)')
 
     # print (price_comparison_frame)
-    print(budget)
+    print("Budget: $",budget)
     print()
     print(price_comparison_frame.to_string(index=False))
     print()
-    print("Recommendation: I would recommend the first item in this sorted list below:")
+    print("Recommendation: This is my recommendation list, from most recommended to the lowest:")
     print()
     print(recommendation_sorter)
 
